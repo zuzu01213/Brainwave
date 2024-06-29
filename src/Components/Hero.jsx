@@ -4,12 +4,15 @@ import Button from "./Button.jsx";
 import { heroIcons } from "../Constants/index.js";
 import { ScrollParallax } from "react-just-parallax";
 import { useRef } from "react";
-import { BackgroundCircles, Gradient } from "./design/Hero.jsx";
+import {BackgroundCircles, BottomLine, Gradient} from "./design/Hero.jsx";
+import {Generating} from "./Generating.jsx";
+import {Notification} from "./Notification.jsx";
 
 export const Hero = () => {
-    const parallaxRef = useRef();
+    const parallaxRef = useRef(null);
 
     return (
+
         <Section
             className="md:pt-[11rem] pt-[9rem] -mt-[5.25rem]"
             crosses
@@ -53,6 +56,13 @@ export const Hero = () => {
                                     width={1024}
                                     height={490}
                                 />
+
+
+
+                                <Generating className={"absolute left-4 right-4 bottom-5 md:left-1/2 " +
+                                    "md:right-auto md:bottom-0 md:w-[32rem] " +
+                                    "md:-translate-x-1/2"}/>
+
                                 <ScrollParallax isAbsolutelyPositioned>
                                     <ul className="hidden absolute -left-[5.5rem] bottom-[7.5rem] px-1 py-1 bg-n-9/40 backdrop-blur border border-n-1/10 rounded-2xl xl:flex">
                                         {heroIcons.map((icon, index) => (
@@ -67,8 +77,17 @@ export const Hero = () => {
                                         ))}
                                     </ul>
                                 </ScrollParallax>
+
+                                <ScrollParallax isAbsolutelyPositioned>
+                                    <Notification
+                                        classname={"absolute hidden -right-[5.5rem] " +
+                                            "bottom-[11rem] w-[18rem] xl:flex"}
+                                        title={"Code generation"}
+                                    />
+                                </ScrollParallax>
                             </div>
                         </div>
+
 
                         <Gradient />
                     </div>
@@ -83,10 +102,13 @@ export const Hero = () => {
                         />
                     </div>
 
-                    <BackgroundCircles />
+                       <ScrollParallax isAbsolutelyPositioned>
+                             <BackgroundCircles />
+                       </ScrollParallax>
                 </div>
 
             </div>
+            <BottomLine/>
         </Section>
     );
 };
