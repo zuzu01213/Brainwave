@@ -74,8 +74,17 @@ import facebook from "./socials/facebook.svg";
 import instagram from "./socials/instagram.svg";
 import telegram from "./socials/telegram.svg";
 import twitter from "./socials/twitter.svg";
-
+import hulu from "./hulu.svg";
+import shop from "./shop.svg"
+import savari from "./safari.svg"
+import ibm from "./ibm.svg"
+import oracle from "./oracle.svg"
 export {
+  oracle,
+  ibm,
+  savari,
+  shop,
+  hulu,
   brainwave,
   check,
   check2,

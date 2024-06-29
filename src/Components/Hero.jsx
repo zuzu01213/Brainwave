@@ -7,6 +7,7 @@ import { useRef } from "react";
 import {BackgroundCircles, BottomLine, Gradient} from "./design/Hero.jsx";
 import {Generating} from "./Generating.jsx";
 import {Notification} from "./Notification.jsx";
+import {CompanyLogo} from "./CompanyLogo.jsx";
 
 export const Hero = () => {
     const parallaxRef = useRef(null);
@@ -64,7 +65,11 @@ export const Hero = () => {
                                     "md:-translate-x-1/2"}/>
 
                                 <ScrollParallax isAbsolutelyPositioned>
-                                    <ul className="hidden absolute -left-[5.5rem] bottom-[7.5rem] px-1 py-1 bg-n-9/40 backdrop-blur border border-n-1/10 rounded-2xl xl:flex">
+                                    <ul className=" absolute -left-[1.5rem] bottom-[23.5rem]
+                                    md:-left-[5.5rem] md:bottom-[7.5rem] flex
+                                    px-1 py-1 bg-n-9/40 backdrop-blur border
+                                    border-n-1/10 rounded-2xl
+                                    ">
                                         {heroIcons.map((icon, index) => (
                                             <li className="p-5" key={index}>
                                                 <img
@@ -80,8 +85,9 @@ export const Hero = () => {
 
                                 <ScrollParallax isAbsolutelyPositioned>
                                     <Notification
-                                        classname={"absolute hidden -right-[5.5rem] " +
-                                            "bottom-[11rem] w-[18rem] xl:flex"}
+                                        classname={"absolute -right-[2rem] md:-right-[5.5rem] " +
+                                            "bottom-[11rem] md:bottom-[16rem] " +
+                                            "w-[18rem] xl:flex"}
                                         title={"Code generation"}
                                     />
                                 </ScrollParallax>
@@ -107,6 +113,9 @@ export const Hero = () => {
                        </ScrollParallax>
                 </div>
 
+                <CompanyLogo
+                className={" relative mt-20 lg:block z-10"}
+                />
             </div>
             <BottomLine/>
         </Section>
