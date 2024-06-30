@@ -1,0 +1,5 @@
+export const Collaboration = () => {
+    return (
+        <></>
+    )
+}

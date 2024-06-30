@@ -22,7 +22,7 @@ export const CompanyLogo = ({ className }) => {
               scrollTrigger: {
                   trigger: logosRefs.current[midIndex], // Trigger animation on the middle logo
                   start: 'bottom 80%',
-                  end: 'bottom 50%',
+                end: 'top center',
                   scrub: 0.5
               }
         });
