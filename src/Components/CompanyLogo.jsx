@@ -10,13 +10,17 @@ export const CompanyLogo = ({ className }) => {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Stagger animation for logos
+        const midIndex = Math.floor(logosRefs.current.length / 2);
+
         gsap.fromTo(logosRefs.current,
             { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 1,
-              stagger: 0.2, // Stagger animation by 0.2 seconds
+              stagger: {
+                  each: 0.2,
+                  from: midIndex, // Start stagger animation from the middle
+              },
               scrollTrigger: {
-                  trigger: logosRefs.current[0], // Trigger animation on first logo
+                  trigger: logosRefs.current[midIndex], // Trigger animation on the middle logo
                   start: 'bottom 80%',
                   end: 'bottom 50%',
                   scrub: 0.5
@@ -41,10 +45,12 @@ export const CompanyLogo = ({ className }) => {
             <h5 id="text" className="opacity-0 tagline md:mb-14 mb-8 text-xs text-center md:text-lg text-color-6">
                 Helping people create beautiful content at
             </h5>
-            <ul className="flex mb-20">
+            <ul className="flex mb-36">
                 {companyLogos.map((logo, index) => (
                     <li ref={el => logosRefs.current[index] = el} key={index}
-                        className="flex opacity-0 items-center justify-center hover:scale-110 duration-300 ease-in-out flex-1 h-[0.5rem]">
+                        className="flex opacity-0 items-center justify-center
+                        hover:scale-110 duration-300 ease-in-out
+                        flex-1 h-[0.5rem] md:mb-20 mt-5">
                         <img
                             src={logo}
                             alt={logo}
