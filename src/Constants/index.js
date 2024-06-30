@@ -132,22 +132,37 @@ export const roadmap = [
   },
 ];
 
-export const collabText =
+
+export const collabText = (id) => {
+  switch (id) {
+    case "0":
+      return "With seamless integration, it's easier than ever to connect your favorite tools and streamline your workflow.";
+    case "1":
+      return "With smart automation, you can eliminate repetitive tasks and focus on what really matters.";
+    case "2":
+      return "With top-notch security, you can be sure that your data is safe and your team is protected.";
+    default:
+      return "With smart automation and top-notch security, it's the perfect solution for teams looking to work smarter.";
+  }
+};
+export const collabText2 =
   "With smart automation and top-notch security, it's the perfect solution for teams looking to work smarter.";
 
 export const collabContent = [
   {
     id: "0",
-    title: "Seamless Integration",
-    text: collabText,
+    title: "Top-notch Security ",
+    text: collabText("2"),
   },
   {
     id: "1",
     title: "Smart Automation",
+    text: collabText("1"),
   },
   {
-    id: "2",
-    title: "Top-notch Security",
+    id: "0",
+    title: "Seamless Integration",
+    text: collabText("0"),
   },
 ];
 

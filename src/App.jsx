@@ -17,6 +17,8 @@ function App() {
               <Hero/>
               <Benefits/>
               <Collaboration/>
+
+
               <div className={"mt-96"}/>
           </div>
 

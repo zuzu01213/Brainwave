@@ -16,49 +16,52 @@ export const Benefits = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.fromTo(
-      textCenterRef.current,
-      { opacity: 0, y: -80 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.5,
-        scrollTrigger: {
-          trigger: textCenterRef.current,
-          start: "top 80%",
-          end: "top 60%",
-          scrub: 1,
-        },
-      }
-    );
+  textCenterRef.current,
+  { opacity: 0, y: -80 },
+  {
+    opacity: 1,
+    y: 0,
+    duration: 2,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: textCenterRef.current,
+      start: "top 80%",
+      end: "top 60%",
+      scrub: 1,
+    },
+  }
+);
 
-    const animations = [
-      { opacity: 0, y: -100 },  // From left
-      { opacity: 0, y: -100 },  // From top
-      { opacity: 0, y: -100 },   // From right
-      { opacity: 0, x: -100 },  // From left
-      { opacity: 0, y: 100 },   // From bottom
-      { opacity: 0, x: 100 }    // From right
-    ];
+const animations = [
+  { opacity: 0, y: -100 },  // From top
+  { opacity: 0, y: -100 },  // From top
+  { opacity: 0, y: -100 },  // From top
+  { opacity: 0, x: -100 },  // From left
+  { opacity: 0, y: 100 },   // From bottom
+  { opacity: 0, x: 100 }    // From right
+];
 
-    benefitsRefs.current.forEach((benefitRef, index) => {
-      gsap.fromTo(
-        benefitRef,
-        animations[index],
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 1.5,
-          scrollTrigger: {
-            trigger: benefitRef,
-            start: 'top 80%',
-            end: 'top 60%',
-            scrub: 1,
-          },
-          delay: index * 0.2, // Stagger the animation
-        }
-      );
-    });
+benefitsRefs.current.forEach((benefitRef, index) => {
+  gsap.fromTo(
+    benefitRef,
+    animations[index],
+    {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: benefitRef,
+        start: 'top 80%',
+        end: 'top 60%',
+        scrub: 1,
+      },
+      delay: index * 0.2, // Stagger the animation
+    }
+  );
+});
+
   }, []);
 
   return (
