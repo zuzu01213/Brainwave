@@ -5,6 +5,7 @@ import ButtonGradient from "./assets/svg/ButtonGradient.jsx";
 import {Hero} from "./Components/Hero.jsx";
 import {Benefits} from "./Components/Benefits.jsx";
 import {Collaboration} from "./Components/Collaboration.jsx";
+import {Services} from "./Components/Services.jsx";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
               <Hero/>
               <Benefits/>
               <Collaboration/>
+              <Services/>
 
 
               <div className={"mt-96"}/>

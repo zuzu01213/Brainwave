@@ -9,6 +9,7 @@ import { LeftCurve, RightCurve } from "./design/Collaboration.jsx";
 
 export const Collaboration = () => {
     const roundedRef = useRef(null);
+    const iconsRefs = useRef([]);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -20,15 +21,33 @@ export const Collaboration = () => {
                 scale: 1.23,
                 opacity: 1,
                 duration: 1.5,
-                ease: "bounce.out",
+                ease: "power1.inOut",
                 scrollTrigger: {
                     trigger: roundedRef.current,
                     start: "top 80%",
                     end: "top 60%",
-
                 },
             }
         );
+
+        iconsRefs.current.forEach((iconRef, index) => {
+            gsap.fromTo(
+                iconRef,
+                { opacity: 0, y: -50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    delay: index * 0.2,
+                    scrollTrigger: {
+                        trigger: iconRef,
+                        start: "top 80%",
+                        end: "top 60%",
+                    },
+                }
+            );
+        });
     }, []);
 
     return (
@@ -69,7 +88,7 @@ export const Collaboration = () => {
                         ref={roundedRef}
                         className="relative left-1/2 flex w-[22rem]
                         aspect-square rounded-full -translate-x-1/2
-                        md:scale-125 opacity-0"
+                        md:scale-125 opacity-1 my-20"
                     >
                         <div
                             className="relative left-1/2 flex w-[22rem] aspect-square
@@ -94,7 +113,9 @@ export const Collaboration = () => {
 
                             <ul>
                                 {collabApps.map((app, index) => (
-                                    <li key={app.id}
+                                    <li
+                                        key={app.id}
+                                        ref={(el) => (iconsRefs.current[index] = el)}
                                         className={`absolute top-0 left-1/2 h-1/2
                                         -ml-[1.6rem] origin-bottom 
                                         rotate-${index * 45}`}
@@ -123,5 +144,5 @@ export const Collaboration = () => {
                 </div>
             </div>
         </Section>
-    )
-}
+    );
+};
