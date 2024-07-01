@@ -3,17 +3,46 @@ import { curve, heroBackground, robot } from "../assets/index.js";
 import Button from "./Button.jsx";
 import { heroIcons } from "../Constants/index.js";
 import { ScrollParallax } from "react-just-parallax";
-import { useRef } from "react";
-import {BackgroundCircles, BottomLine, Gradient} from "./design/Hero.jsx";
-import {Generating} from "./Generating.jsx";
-import {Notification} from "./Notification.jsx";
-import {CompanyLogo} from "./CompanyLogo.jsx";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { BackgroundCircles, BottomLine, Gradient } from "./design/Hero.jsx";
+import { Generating } from "./Generating.jsx";
+import { Notification } from "./Notification.jsx";
+import { CompanyLogo } from "./CompanyLogo.jsx";
 
 export const Hero = () => {
-    const parallaxRef = useRef(null);
+    const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
+
+    useEffect(() => {
+        const titleElement = titleRef.current;
+        const descriptionElement = descriptionRef.current;
+
+        if (titleElement && descriptionElement) {
+            gsap.fromTo(
+                titleElement,
+                { text: "" },
+                {
+                    duration: 3,
+                    text: { value: titleElement.textContent, delimiter: "" },
+                    ease: "none"
+                }
+            );
+
+            gsap.fromTo(
+                descriptionElement,
+                { text: "" },
+                {
+                    duration: 3,
+                    delay: 0.5,
+                    text: { value: descriptionElement.textContent, delimiter: "" },
+                    ease: "none"
+                }
+            );
+        }
+    }, []);
 
     return (
-
         <Section
             className="md:pt-[11rem] pt-[9rem] -mt-[5.25rem]"
             crosses
@@ -21,9 +50,9 @@ export const Hero = () => {
             customPaddings
             id="hero"
         >
-            <div className="container relative" ref={parallaxRef}>
+            <div className="container relative">
                 <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[4rem] md:mb-20 lg:mb-[6rem]">
-                    <h1 className="h1 mb-6">
+                    <h1 className="h1 mb-6" ref={titleRef}>
                         <span className="text-color-2">Explore</span> the Possibilities of{" "}
                         <span className="text-color-6">AI Chatting</span> with{" "}
                         <span className="inline-block relative text-color-1">
@@ -37,7 +66,7 @@ export const Hero = () => {
                             />
                         </span>
                     </h1>
-                    <p className="body-1 max-w-3xl text-n-2 lg:mb-8 mb-6 mx-auto md:my-12">
+                    <p className="body-1 max-w-3xl text-n-2 lg:mb-8 mb-6 mx-auto md:my-12" ref={descriptionRef}>
                         Unleash the power of AI within Brainwave. Upgrade your productivity with Brainwave, the open AI chat app.
                     </p>
                     <Button href="/pricing" white>
@@ -58,18 +87,21 @@ export const Hero = () => {
                                     height={490}
                                 />
 
-
-
-                                <Generating className={"absolute left-4 right-4 bottom-5 md:left-1/2 " +
-                                    "md:right-auto md:bottom-0 md:w-[32rem] " +
-                                    "md:-translate-x-1/2"}/>
+                                <Generating
+                                    className={
+                                        "absolute left-4 right-4 bottom-5 md:left-1/2 " +
+                                        "md:right-auto md:bottom-0 md:w-[32rem] " +
+                                        "md:-translate-x-1/2"
+                                    }
+                                />
 
                                 <ScrollParallax isAbsolutelyPositioned>
-                                    <ul className=" absolute -left-[1.5rem] bottom-[23.5rem]
+                                    <ul
+                                        className="absolute -left-[1.5rem] bottom-[23.5rem]
                                     md:-left-[5.5rem] md:bottom-[7.5rem] flex
                                     px-1 py-1 bg-n-9/40 backdrop-blur border
-                                    border-n-1/10 rounded-2xl
-                                    ">
+                                    border-n-1/10 rounded-2xl"
+                                    >
                                         {heroIcons.map((icon, index) => (
                                             <li className="p-5" key={index}>
                                                 <img
@@ -85,15 +117,16 @@ export const Hero = () => {
 
                                 <ScrollParallax isAbsolutelyPositioned>
                                     <Notification
-                                        classname={"absolute -right-[2rem] md:-right-[5.5rem] " +
+                                        classname={
+                                            "absolute -right-[2rem] md:-right-[5.5rem] " +
                                             "bottom-[11rem] md:bottom-[16rem] " +
-                                            "w-[18rem] xl:flex"}
+                                            "w-[18rem] xl:flex"
+                                        }
                                         title={"Code generation"}
                                     />
                                 </ScrollParallax>
                             </div>
                         </div>
-
 
                         <Gradient />
                     </div>
@@ -108,16 +141,14 @@ export const Hero = () => {
                         />
                     </div>
 
-                       <ScrollParallax isAbsolutelyPositioned>
-                             <BackgroundCircles />
-                       </ScrollParallax>
+                    <ScrollParallax isAbsolutelyPositioned>
+                        <BackgroundCircles />
+                    </ScrollParallax>
                 </div>
 
-                <CompanyLogo
-                className={" relative mt-20 lg:block z-10"}
-                />
+                <CompanyLogo className={"relative mt-20 lg:block z-10"} />
             </div>
-            <BottomLine/>
+            <BottomLine />
         </Section>
     );
 };
