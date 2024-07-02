@@ -45,9 +45,12 @@ export const Pricing = () => {
 
   return (
     <Section className="overflow-hidden" id="pricing">
+
       <div className="container relative z-2" ref={containerRef}>
 
         <div className="hidden relative items-center justify-center mb-[26rem] lg:flex">
+
+
           <ScrollParallax isAbsolutelyPositioned>
             <div className={"relative items-center justify-center flex"}>
               <img
@@ -60,6 +63,8 @@ export const Pricing = () => {
               />
             </div>
           </ScrollParallax>
+
+
           <div className="absolute top-20 left-1/2 w-[70rem] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
             <img
               src={stars}
@@ -70,6 +75,7 @@ export const Pricing = () => {
               ref={starsRef}
             />
           </div>
+
         </div>
 
           <Tagline>
@@ -82,9 +88,17 @@ export const Pricing = () => {
         </h1>
 
         <div className="relative">
+
+
+
           <PricingList />
+
           <LeftLine />
           <RightLine />
+
+
+
+
         </div>
 
         <div className="flex justify-center mt-10">
