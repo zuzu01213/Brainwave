@@ -64,13 +64,13 @@ export const ServiceCards2 = () => {
                     </ul>
                 </div>
 
-                <div className="relative h-[20rem] bg-n-8 rounded-xl overflow-hidden">
+                <div className="relative h-[25rem] bg-n-8 rounded-xl overflow-hidden">
                     <img
                         src={service3}
                         className="w-full h-full object-cover image-animation-3"
                         alt="scary"
                         width={520}
-                        height={400}
+                        height={600}
                     />
 
                     <ScrollParallax isAbsolutelyPositioned>

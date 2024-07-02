@@ -1,13 +1,10 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Section } from "../Parts/Section.jsx";
+import { animateRounded, animateIcons, animateContent, animateButton, animateText } from "./animationCollaboration";
 import { collabApps, collabContent, collabText2 } from "../../Constants/index.js";
 import { brainwaveSymbol, check } from "../../assets/index.js";
 import Button from "../Parts/Button.jsx";
 import { LeftCurve, RightCurve } from "../design/Collaboration.jsx";
-
-gsap.registerPlugin(ScrollTrigger);
+import { Section } from "../Parts/Section.jsx";
 
 export const Collaboration = () => {
     const roundedRef = useRef(null);
@@ -17,93 +14,12 @@ export const Collaboration = () => {
     const textRef = useRef(null);
 
     useEffect(() => {
-        gsap.fromTo(
-            roundedRef.current,
-            { scale: 0.5, opacity: 0 },
-            {
-                scale: 1.23,
-                opacity: 1,
-                duration: 1.5,
-                ease: "power1.inOut",
-                scrollTrigger: {
-                    trigger: roundedRef.current,
-                    start: "top 80%",
-                    end: "top 60%",
-                },
-            }
-        );
-
-        iconsRefs.current.forEach((iconRef, index) => {
-            gsap.fromTo(
-                iconRef,
-                { opacity: 0, y: -50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    ease: "power2.out",
-                    delay: index * 0.2,
-                    scrollTrigger: {
-                        trigger: iconRef,
-                        start: "top 80%",
-                        end: "top 60%",
-                    },
-                }
-            );
-        });
-
-        contentRefs.current.forEach((contentRef, index) => {
-            gsap.fromTo(
-                contentRef,
-                { opacity: 0, x: -50 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 1,
-                    ease: "power2.out",
-                    delay: index * 0.2,
-                    scrollTrigger: {
-                        trigger: contentRef,
-                        start: "top 80%",
-                        end: "top 60%",
-                    },
-                }
-            );
-        });
-
-        gsap.fromTo(
-            buttonRef.current,
-            { opacity: 0, y: 50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: buttonRef.current,
-                    start: "top 80%",
-                    end: "top 60%",
-                },
-            }
-        );
-
-        gsap.fromTo(
-            textRef.current,
-            { opacity: 0, y: 50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: textRef.current,
-                    start: "top 80%",
-                    end: "top 60%",
-                },
-            }
-        );
+        animateRounded(roundedRef.current);
+        animateIcons(iconsRefs.current);
+        animateContent(contentRefs.current);
+        animateButton(buttonRef.current);
+        animateText(textRef.current);
     }, []);
-
     return (
         <Section crosses>
             <div className={"container lg:flex"}>

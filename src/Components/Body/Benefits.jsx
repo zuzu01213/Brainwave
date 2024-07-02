@@ -1,67 +1,18 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { animateTextCenter, animateBenefits } from "./animationBenefits";
 import { benefits } from "../../Constants/index.js";
 import Arrow from "../../assets/svg/Arrow.jsx";
 import { GradientLight } from "../design/Benefits.jsx";
 import { Section } from "../Parts/Section.jsx";
 import ClipPath from "../../assets/svg/ClipPath.jsx";
-import { Heading } from "../Header/Heading.jsx";
 
 export const Benefits = () => {
   const benefitsRefs = useRef([]);
   const textCenterRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.fromTo(
-  textCenterRef.current,
-  { opacity: 0, y: -80 },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 2,
-    ease: "power4.out",
-    scrollTrigger: {
-      trigger: textCenterRef.current,
-      start: "top 80%",
-      end: "top 60%",
-
-    },
-  }
-);
-
-const animations = [
-  { opacity: 0, y: -100 },  // From top
-  { opacity: 0, y: -100 },  // From top
-  { opacity: 0, y: -100 },  // From top
-  { opacity: 0, x: -100 },  // From left
-  { opacity: 0, y: 100 },   // From bottom
-  { opacity: 0, x: 100 }    // From right
-];
-
-benefitsRefs.current.forEach((benefitRef, index) => {
-  gsap.fromTo(
-    benefitRef,
-    animations[index],
-    {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      duration: 1,
-      ease: "power4.out",
-      scrollTrigger: {
-        trigger: benefitRef,
-        start: 'top 80%',
-        end: 'top 60%',
-
-      },
-      delay: index * 0.2, // Stagger the animation
-    }
-  );
-});
-
+    animateTextCenter(textCenterRef.current);
+    animateBenefits(benefitsRefs.current);
   }, []);
 
   return (

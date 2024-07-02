@@ -7,6 +7,7 @@ import {Collaboration} from "./Components/Body/Collaboration.jsx";
 import {Services} from "./Components/Service/Services.jsx";
 import {Pricing} from "./Components/Pricing/Pricing.jsx";
 import {Roadmap} from "./Components/Footer/Roadmap.jsx";
+import {Footer} from "./Components/Footer/Footer.jsx";
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
               <Services/>
               <Pricing/>
               <Roadmap/>
-              
+              <Footer/>
           </div>
 
       <ButtonGradient />
