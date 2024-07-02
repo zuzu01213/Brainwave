@@ -22,12 +22,12 @@ export const Benefits = () => {
     opacity: 1,
     y: 0,
     duration: 2,
-    ease: "power2.out",
+    ease: "power4.out",
     scrollTrigger: {
       trigger: textCenterRef.current,
       start: "top 80%",
       end: "top 60%",
-      scrub: 1,
+
     },
   }
 );
@@ -49,13 +49,13 @@ benefitsRefs.current.forEach((benefitRef, index) => {
       opacity: 1,
       x: 0,
       y: 0,
-      duration: 2,
-      ease: "power2.out",
+      duration: 1,
+      ease: "power4.out",
       scrollTrigger: {
         trigger: benefitRef,
         start: 'top 80%',
         end: 'top 60%',
-        scrub: 1,
+
       },
       delay: index * 0.2, // Stagger the animation
     }
