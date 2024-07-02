@@ -11,6 +11,7 @@ export const setupAnimations = () => {
             scrollTrigger: {
                 trigger: `#animation-${index + 1}`,
                 start: 'top bottom-=100', // Adjust start position
+                
             },
         });
 
@@ -45,19 +46,5 @@ export const setupAnimations = () => {
         );
     });
 
-    // Example animation outside the forEach loop
-    gsap.fromTo(
-        ".animation-8",
-        { opacity: 0, y: 50 },
-        {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: 1.8, // Adjust delay as needed
-            scrollTrigger: {
-                trigger: ".animation-8",
-                start: 'top bottom-=100', // Adjust start position
-            }
-        }
-    );
+
 };

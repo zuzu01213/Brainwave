@@ -6,12 +6,14 @@ import { Tagline } from "../Parts/Tagline.jsx";
 import Button from "../Parts/Button.jsx";
 import { setupAnimations } from './animation.js'
 import {RoadmapContent} from "./RoadmapContent.jsx";
+import {setupAnimationsSecond} from "./animationSecond.js";
 
 export const Roadmap = () => {
 
 
      useEffect(() => {
         setupAnimations();
+        setupAnimationsSecond();
     }, []);
 
 
