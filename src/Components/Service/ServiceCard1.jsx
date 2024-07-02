@@ -1,6 +1,6 @@
-import {check, service1} from "../assets/index.js";
-import {brainwaveServices} from "../Constants/index.js";
-import {Generating} from "./Generating.jsx";
+import {check, service1} from "../../assets/index.js";
+import {brainwaveServices} from "../../Constants/index.js";
+import {Generating} from "../Parts/Generating.jsx";
 import React from "react";
 
 export const ServiceCard1 = () => {

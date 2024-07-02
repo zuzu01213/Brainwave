@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { pricing } from "../Constants/index.js";
-import Button from "./Button.jsx";
-import { check } from "../assets/index.js";
+import { pricing } from "../../Constants/index.js";
+import Button from "../Parts/Button.jsx";
+import { check } from "../../assets/index.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,10 +31,12 @@ export const PricingList = () => {
                     {
                         opacity: 0,
                         x: -100,
+                        rotation: -15,
                     },
                     {
                         ...animationProps,
                         x: 0,
+                        rotation: 0,
                     }
                 );
             } else if (index === 1) {
@@ -57,13 +59,34 @@ export const PricingList = () => {
                     {
                         opacity: 0,
                         x: 100,
+                        rotation: 15,
                     },
                     {
                         ...animationProps,
                         x: 0,
+                        rotation: 0,
                     }
                 );
             }
+
+            // Animating elements inside each pricing card
+            gsap.fromTo(
+                el.querySelectorAll(".h4, .body-2, .h3, ul, .Button"),
+                {
+                    opacity: 0,
+                    y: 20,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 80%",
+                    },
+                }
+            );
         });
     }, []);
 
@@ -73,7 +96,10 @@ export const PricingList = () => {
                 <div
                     key={item.id}
                     ref={el => pricingRefs.current[index] = el}
-                    className="w-[19rem] max-lg:w-full h-full px-6 bg-n-8 border border-n-6 rounded-[2rem] lg:w-auto even:py-14 odd:py-8"
+                    className="w-[19rem] max-lg:w-full h-full px-6 bg-n-8
+                    border border-n-6 rounded-[2rem] lg:w-auto
+                    even:py-14 odd:py-8 [&>h4]:first:text-color-2
+                    [&>h4]:even:text-color-1 [&>h4]:last:text-color-3"
                 >
                     <h4 className="mb-4 h4">
                         {item.title}

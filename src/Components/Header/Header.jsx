@@ -1,9 +1,9 @@
-import { brainwave } from "../assets/index.js";
+import { brainwave } from "../../assets/index.js";
 import { useLocation } from "react-router-dom";
-import { navigation } from "../Constants/index.js";
-import Button from "./Button.jsx";
-import { HambugerMenu } from "./design/Header.jsx";
-import MenuSvg from "../assets/svg/MenuSvg.jsx";
+import { navigation } from "../../Constants/index.js";
+import Button from "../Parts/Button.jsx";
+import { HambugerMenu } from "../design/Header.jsx";
+import MenuSvg from "../../assets/svg/MenuSvg.jsx";
 import { useState } from "react";
 import { disablePageScroll, enablePageScroll } from "scroll-lock/dist/scroll-lock.js";
 

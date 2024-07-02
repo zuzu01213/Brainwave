@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import {Header} from "./Components/Header.jsx";
+import {Header} from "./Components/Header/Header.jsx";
 import ButtonGradient from "./assets/svg/ButtonGradient.jsx";
-import {Hero} from "./Components/Hero.jsx";
-import {Benefits} from "./Components/Benefits.jsx";
-import {Collaboration} from "./Components/Collaboration.jsx";
-import {Services} from "./Components/Services.jsx";
-import {Pricing} from "./Components/Pricing.jsx";
+import {Hero} from "./Components/Header/Hero.jsx";
+import {Benefits} from "./Components/Body/Benefits.jsx";
+import {Collaboration} from "./Components/Body/Collaboration.jsx";
+import {Services} from "./Components/Service/Services.jsx";
+import {Pricing} from "./Components/Pricing/Pricing.jsx";
+import {Roadmap} from "./Components/Footer/Roadmap.jsx";
 
 
 function App() {
@@ -20,9 +21,8 @@ function App() {
               <Collaboration/>
               <Services/>
               <Pricing/>
+              <Roadmap/>
 
-
-              <div className={"mt-96"}/>
           </div>
 
       <ButtonGradient />

@@ -1,8 +1,8 @@
-import {service2, service3} from "../assets/index.js";
-import Button from "./Button.jsx";
+import {service2, service3} from "../../assets/index.js";
+import Button from "../Parts/Button.jsx";
 import {ScrollParallax} from "react-just-parallax";
-import {PhotChatMessage, VideoBar, VideoChatMessage} from "./design/Services.jsx";
-import {brainwaveServicesIcons} from "../Constants/index.js";
+import {PhotChatMessage, VideoBar, VideoChatMessage} from "../design/Services.jsx";
+import {brainwaveServicesIcons} from "../../Constants/index.js";
 import React from "react";
 
 export const ServiceCards2 = () => {

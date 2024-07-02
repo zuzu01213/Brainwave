@@ -1,14 +1,14 @@
-import { Section } from "./Section.jsx";
-import { curve, heroBackground, robot } from "../assets/index.js";
-import Button from "./Button.jsx";
-import { heroIcons } from "../Constants/index.js";
+import { Section } from "../Parts/Section.jsx";
+import { curve, heroBackground, robot } from "../../assets/index.js";
+import Button from "../Parts/Button.jsx";
+import { heroIcons } from "../../Constants/index.js";
 import { ScrollParallax } from "react-just-parallax";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { BackgroundCircles, BottomLine, Gradient } from "./design/Hero.jsx";
-import { Generating } from "./Generating.jsx";
-import { Notification } from "./Notification.jsx";
-import { CompanyLogo } from "./CompanyLogo.jsx";
+import { BackgroundCircles, BottomLine, Gradient } from "../design/Hero.jsx";
+import { Generating } from "../Parts/Generating.jsx";
+import { Notification } from "../Parts/Notification.jsx";
+import { CompanyLogo } from "../Body/CompanyLogo.jsx";
 
 export const Hero = () => {
     const titleRef = useRef(null);

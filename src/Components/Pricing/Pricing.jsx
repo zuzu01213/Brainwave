@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Section } from "./Section.jsx";
-import { smallSphere, stars } from "../assets/index.js";
+import { Section } from "../Parts/Section.jsx";
+import { smallSphere, stars } from "../../assets/index.js";
 import { ScrollParallax } from "react-just-parallax";
-import { Tagline } from "./Tagline.jsx";
+import { Tagline } from "../Parts/Tagline.jsx";
 import { PricingList } from "./PricingList.jsx";
-import { LeftLine, RightLine } from "./design/Pricing.jsx";
+import { LeftLine, RightLine } from "../design/Pricing.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,6 +71,10 @@ export const Pricing = () => {
             />
           </div>
         </div>
+
+          <Tagline>
+              Get started with Brainwave
+          </Tagline>
 
         <h1 className={"h2 md:h1 my-12 items-center justify-center flex z-5"} ref={headingRef}>
           <span className={"text-color-1"}>One&nbsp;</span> Payment,&nbsp;

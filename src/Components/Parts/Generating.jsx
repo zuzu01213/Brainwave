@@ -1,6 +1,6 @@
-import { loading } from "../assets/index.js";
+import { loading } from "../../assets/index.js";
 import React from "react";
-import "./loading.css"; // File CSS yang berisi animasi keyframes
+import "../css/loading.css"; // File CSS yang berisi animasi keyframes
 
 export const Generating = ({ className }) => {
   return (

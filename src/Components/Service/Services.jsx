@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Section } from "./Section.jsx";
-import { Gradient } from "./design/Services.jsx";
+import { Section } from "../Parts/Section.jsx";
+import { Gradient } from "../design/Services.jsx";
 import {ServiceCard1} from "./ServiceCard1.jsx";
 import {ServiceCards2} from "./ServiceCards2.jsx";
+import {Tagline} from "../Parts/Tagline.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -140,10 +141,7 @@ export const Services = () => {
   return (
     <Section id="how-to-use">
       <div className="container ">
-        <heading
-          title="Generative AI made for creators."
-          text="Brainwave unlocks the potential of AI-powered applications"
-        />
+
 
         <div className="relative">
           <ServiceCard1/>

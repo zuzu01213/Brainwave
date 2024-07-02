@@ -1,4 +1,4 @@
-import brackets from "../assets/svg/Brackets.jsx";
+import brackets from "../../assets/svg/Brackets.jsx";
 
 export const Tagline = ({className, children}) => {
     return (

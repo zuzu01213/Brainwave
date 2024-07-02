@@ -1,19 +1,22 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Section } from "./Section.jsx";
-import { collabApps, collabContent, collabText2 } from "../Constants/index.js";
-import { brainwaveSymbol, check } from "../assets/index.js";
-import Button from "./Button.jsx";
-import { LeftCurve, RightCurve } from "./design/Collaboration.jsx";
+import { Section } from "../Parts/Section.jsx";
+import { collabApps, collabContent, collabText2 } from "../../Constants/index.js";
+import { brainwaveSymbol, check } from "../../assets/index.js";
+import Button from "../Parts/Button.jsx";
+import { LeftCurve, RightCurve } from "../design/Collaboration.jsx";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Collaboration = () => {
     const roundedRef = useRef(null);
     const iconsRefs = useRef([]);
+    const contentRefs = useRef([]);
+    const buttonRef = useRef(null);
+    const textRef = useRef(null);
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
         gsap.fromTo(
             roundedRef.current,
             { scale: 0.5, opacity: 0 },
@@ -48,19 +51,74 @@ export const Collaboration = () => {
                 }
             );
         });
+
+        contentRefs.current.forEach((contentRef, index) => {
+            gsap.fromTo(
+                contentRef,
+                { opacity: 0, x: -50 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    delay: index * 0.2,
+                    scrollTrigger: {
+                        trigger: contentRef,
+                        start: "top 80%",
+                        end: "top 60%",
+                    },
+                }
+            );
+        });
+
+        gsap.fromTo(
+            buttonRef.current,
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: buttonRef.current,
+                    start: "top 80%",
+                    end: "top 60%",
+                },
+            }
+        );
+
+        gsap.fromTo(
+            textRef.current,
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: textRef.current,
+                    start: "top 80%",
+                    end: "top 60%",
+                },
+            }
+        );
     }, []);
 
     return (
         <Section crosses>
             <div className={"container lg:flex"}>
-                <div className={"max-w-[25rem] "}>
+                <div className={"max-w-[25rem]"}>
                     <h2 className={"h2 mb-4 md:mb-8"}>
                         AI Chat App for Seamless Collaboration
                     </h2>
                     <ul className={"max-w-[22rem] mb-10 md:mb-14"}>
-                        {collabContent.map((item) => (
-                            <li className={"mb-3 py-3 "} key={item.id}>
-                                <div className={"flex items-center "}>
+                        {collabContent.map((item, index) => (
+                            <li
+                                className={"mb-3 py-3"}
+                                key={item.id}
+                                ref={el => contentRefs.current[index] = el}
+                            >
+                                <div className={"flex items-center"}>
                                     <img src={check} width={24} height={24} alt={"check"} />
                                     <h6 className={"body-2 ml-5"}>{item.title}</h6>
                                 </div>
@@ -72,17 +130,19 @@ export const Collaboration = () => {
                             </li>
                         ))}
                     </ul>
-                    <Button>
+                    <Button ref={buttonRef}>
                         Try it now
                     </Button>
                 </div>
 
                 <div className="lg:ml-auto xl:w-[30rem]">
-                    <p className="body-2 mb-28 text-n-4 md:mb-24 lg:mb-52 lg:w-[22rem] lg:mx-auto my-4">
+                    <p
+                        className="body-2 mb-28 text-n-4 md:mb-24 lg:mb-52 lg:w-[22rem] lg:mx-auto my-4"
+                        ref={textRef}
+                    >
                         {collabText2}
                     </p>
 
-                    {/* rounded effect */}
                     <div
                         id="rounded"
                         ref={roundedRef}
@@ -115,7 +175,7 @@ export const Collaboration = () => {
                                 {collabApps.map((app, index) => (
                                     <li
                                         key={app.id}
-                                        ref={(el) => (iconsRefs.current[index] = el)}
+                                        ref={el => iconsRefs.current[index] = el}
                                         className={`absolute top-0 left-1/2 h-1/2
                                         -ml-[1.6rem] origin-bottom 
                                         rotate-${index * 45}`}
@@ -126,7 +186,7 @@ export const Collaboration = () => {
                                         -rotate-${index * 45}`}
                                         >
                                             <img
-                                                className={"m-auto "}
+                                                className={"m-auto"}
                                                 width={app.width}
                                                 height={app.height}
                                                 alt={app.title}
