@@ -13,7 +13,7 @@ export const Services = () => {
     gsap.fromTo(
       ".image-animation",
       { opacity: 0, x: -550, rotation: -30 },
-      { opacity: 1, x: 0, rotation: 0, duration: 1.5, ease: 'power1.inOut',
+      { opacity: 1, x: 0, rotation: 0, duration: 1.5, ease: 'power3.inOut',
         scrollTrigger: {
           trigger: ".image-animation",
           start: "top 36%",
@@ -127,8 +127,8 @@ export const Services = () => {
 
     gsap.fromTo(
       ".generating-animation",
-      { opacity: 0, y: 50, skewX: 10 },
-      { opacity: 1, y: 0, skewX: 0, duration: 1, ease: 'power1.inOut',
+      { opacity: 0, y: 50, skewX: 10 ,  },
+      { opacity: 1, y: 0, skewX: 0,  duration: 1, ease: 'power1.inOut',
         scrollTrigger: {
           trigger: ".generating-animation",
           start: "bottom bottom",
@@ -139,7 +139,7 @@ export const Services = () => {
 
   return (
     <Section id="how-to-use">
-      <div className="container">
+      <div className="container ">
         <heading
           title="Generative AI made for creators."
           text="Brainwave unlocks the potential of AI-powered applications"
